@@ -140,7 +140,7 @@ footer a{text-decoration-color:var(--gold);text-underline-offset:3px}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#/" aria-label="AgileTalent Associates, home">
-  <img class="mark" src="Artboard 3@4x.png" alt="AgileTalent Associates">
+  <img class="mark" src="Artboard 4@4x.png" alt="AgileTalent Associates">
 </a>
     <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" aria-label="Main">
@@ -171,6 +171,15 @@ footer a{text-decoration-color:var(--gold);text-underline-offset:3px}
       <p style="margin-top:1em">Advisory support is not legal advice.</p></div>
   </div>
   <div class="wrap"><p style="margin-top:32px;font-size:.85rem">&copy; 2026 AgileTalent Associates Limited. All rights reserved.</p></div>
+  
+<div class="social-links">
+  <a href="https://x.com/agiletalents_ng"
+     target="_blank" rel="noopener noreferrer">X</a>
+
+  <a href="https://www.linkedin.com/company/agiletalent-associates"
+     target="_blank" rel="noopener noreferrer">LinkedIn</a>
+ </div>
+
 </footer>
 
 <script>
@@ -184,7 +193,7 @@ const S=[
   s:"Recruitment outsourcing without a large internal team."},
  {id:"hr-consulting",t:"HR Consulting and People Operations",
   c:"Growing businesses often run on informal HR practice, which creates inconsistency and avoidable disputes.",
-  h:"We design HR processes, write policies, procedures and employee handbooks, build documentation, and set up performance and employee relations frameworks. We also support workforce planning and organisational structuring.",
+  h:"We design HR processes, design policies, procedures and employee handbooks, build documentation, and set up performance management and employee relations frameworks. We also support workforce planning and organisational structuring.",
   b:"Consistent people practices, clearer manager expectations and fewer avoidable people issues.",
   n:"An HR health check of what you have today, followed by a prioritised plan.",
   s:"Structured HR without a large in-house department."},
@@ -233,8 +242,8 @@ const track=`<svg class="track" viewBox="0 0 600 600" preserveAspectRatio="xMidY
 const svcCell=s=>`<div class="cell"><h3>${s.t}</h3><p>${s.s}</p><a class="more" href="#/services/${s.id}">How it works</a></div>`;
 
 const PAGES={
-home:{title:"AgileTalent Associates Limited | HR Consulting and Recruitment in Nigeria",
-desc:"AgileTalent Associates helps Nigerian businesses recruit the right talent, strengthen HR operations and build people systems that perform and grow.",
+home:{title:"AgileTalent Associates Limited | Full Service HR Consulting",
+desc:"AgileTalent Associates Limited is a human resources and talent solutions firm supporting indigenous and multinational organizations within Nigeria with practical, people-focused HR services.",
 html:()=>`
 <section class="hero dark">${track}<div class="wrap">
  <h1>Better people.<br>Stronger businesses.<br>Faster growth.</h1>
@@ -280,7 +289,7 @@ html:()=>`
  <p class="lead">Send a short enquiry. We will respond by email to arrange a conversation.</p>${CTA()}
 </div></section>`},
 
-about:{title:"About AgileTalent Associates | HR Consulting Nigeria",desc:"Learn how AgileTalent Associates approaches HR consulting, recruitment and workforce solutions for Nigerian organisations.",
+about:{title:"About AgileTalent Associates | HR and Recruitment Services in Nigeria",desc:"Learn how AgileTalent Associates approaches HR consulting, recruitment and workforce solutions for organisations.",
 html:()=>`
 <section class="sec dark"><div class="wrap"><h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">About AgileTalent</h1>
 <p class="lead">A Nigerian HR and business consulting firm, established in 2022, helping organisations hire well and manage people effectively.</p></div></section>
@@ -309,7 +318,7 @@ html:(sub)=>`
  <p style="margin-top:20px"><a class="btn" href="#/contact?s=${s.id}">Enquire about this service</a></p></article>`).join("")}
  <p class="note" style="margin:24px 0 64px">AgileTalent provides HR advisory support. It is not legal advice. We do not guarantee placements, timelines or compliance outcomes beyond what is agreed in writing with each client.</p></div>`},
 
-industries:{title:"Who We Serve: SMEs, Start-ups, Corporates and MDAs | AgileTalent",desc:"AgileTalent supports SMEs, start-ups, corporate organisations and public-sector bodies in Nigeria with recruitment and HR solutions.",
+industries:{title:"Who We Serve: SMEs, Start-ups, Corporates and Public Services | AgileTalent",desc:"AgileTalent supports SMEs, start-ups, corporate organisations and public-sector bodies in Nigeria with recruitment and HR solutions.",
 html:()=>`
 <section class="sec dark"><div class="wrap"><h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Who we serve</h1>
 <p class="lead">Different organisations need different levels of HR support. We scope accordingly.</p></div></section>
