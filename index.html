@@ -192,11 +192,11 @@ footer a{text-decoration-color:var(--gold);text-underline-offset:3px}
 const SITE={name:"AgileTalent Associates Limited",email:"agiletalents@outlook.com"};
 // ---- GOOGLE FORM LINK ----
 // 1. "action" is your form's response URL (already set).
-// 2. Paste each field's entry ID (see setup notes), for example "entry.1234567890". All eight are needed.
+// 2. Entry IDs below come from the form's pre-filled link. If you add or recreate a question, update its ID.
 // While "action" is empty, the form falls back to opening a prefilled email.
 const GOOGLE_FORM={
  action:"https://docs.google.com/forms/d/e/1FAIpQLScBjtHUMUPaBm4mpfFWOR3PKpIQIRRhUJvMGTyRaIfueTacQg/formResponse",
- entries:{name:"",company:"",email:"",phone:"",service:"",size:"",message:"",consent:""} // e.g. "entry.1234567890"
+ entries:{name:"entry.557000281",company:"entry.604062627",email:"entry.950094608",phone:"entry.100862902",service:"entry.237728569",size:"entry.1170657527",message:"entry.1468914824",consent:""} // consent has no question in the Google Form, so it is checked on the website only
 };
 const gfReady=()=>GOOGLE_FORM.action&&["name","company","email","phone","service","size","message"].every(k=>GOOGLE_FORM.entries[k]);
 
