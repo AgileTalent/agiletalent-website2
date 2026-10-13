@@ -145,10 +145,10 @@ const done=h=>{box.innerHTML=h;const o=document.getElementById("okbox");if(o)o.f
 if(gfReady()){
 const btn=f.querySelector('button[type="submit"]');btn.disabled=true;btn.textContent="Sending…";
 const fd = new URLSearchParams();
-
 for (const k in vals) {
-  const id = GOOGLE_FORM.entries[k];
-  if (id) fd.append(id, vals[k]);
+    const id = GOOGLE_FORM.entries[k];
+    if (id)
+        fd.append(id, vals[k]);
 }
 
 fetch(GOOGLE_FORM.action, {
