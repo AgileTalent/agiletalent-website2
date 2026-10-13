@@ -144,8 +144,18 @@ const vals={name:v("name"),company:v("company"),email:v("email"),phone:v("phone"
 const done=h=>{box.innerHTML=h;const o=document.getElementById("okbox");if(o)o.focus()};
 if(gfReady()){
 const btn=f.querySelector('button[type="submit"]');btn.disabled=true;btn.textContent="Sending…";
-const fd=new FormData();for(const k in vals){const id=GOOGLE_FORM.entries[k];if(id)fd.append(id,vals[k]);}
-fetch(GOOGLE_FORM.action,{method:"POST",mode:"no-cors",body:fd})
+const fd = new URLSearchParams();
+
+for (const k in vals) {
+  const id = GOOGLE_FORM.entries[k];
+  if (id) fd.append(id, vals[k]);
+}
+
+fetch(GOOGLE_FORM.action, {
+  method: "POST",
+  mode: "no-cors",
+  body: fd
+})
 .then(()=>done(`<div class="ok" role="status" tabindex="-1" id="okbox"><h2>Request sent</h2><p>Your enquiry has been passed to the form submission endpoint. Because Google Forms does not provide this website with a readable confirmation, please contact <a href="mailto:${SITE.email}">${SITE.email}</a> if you do not receive a response.</p></div>`))
 .catch(()=>{btn.disabled=false;btn.textContent="Send request";let m=document.getElementById("sendErr");if(!m){m=document.createElement("p");m.id="sendErr";m.className="err";m.setAttribute("role","alert");f.appendChild(m)}m.textContent="We could not send your request. Please try again or email "+SITE.email+"."});
 return;
