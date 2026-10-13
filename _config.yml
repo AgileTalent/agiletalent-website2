@@ -1,7 +1,0 @@
-
-title: "AgileTalent Associates Limited"
-description: "HR consulting, recruitment and workforce insights for Nigerian businesses."
-url: "https://agiletalentassociates.com"
-timezone: Africa/Lagos
-markdown: kramdown
-permalink: /insights/:year/:month/:day/:title/
