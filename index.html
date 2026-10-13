@@ -191,14 +191,14 @@ footer a{text-decoration-color:var(--gold);text-underline-offset:3px}
 <script>
 const SITE={name:"AgileTalent Associates Limited",email:"agiletalents@outlook.com"};
 // ---- GOOGLE FORM LINK ----
-// 1. Paste the form's response URL in "action" (ends with /formResponse).
-// 2. Paste each field's entry ID (see setup notes). Leave phone and size empty if not in your form.
+// 1. "action" is your form's response URL (already set).
+// 2. Paste each field's entry ID (see setup notes), for example "entry.1234567890". All eight are needed.
 // While "action" is empty, the form falls back to opening a prefilled email.
 const GOOGLE_FORM={
- action:"", // e.g. "https://docs.google.com/forms/d/e/1FAIpQLSxxxxxxxx/formResponse"
+ action:"https://docs.google.com/forms/d/e/1FAIpQLScBjtHUMUPaBm4mpfFWOR3PKpIQIRRhUJvMGTyRaIfueTacQg/formResponse",
  entries:{name:"",company:"",email:"",phone:"",service:"",size:"",message:"",consent:""} // e.g. "entry.1234567890"
 };
-const gfReady=()=>GOOGLE_FORM.action&&["name","company","email","service","message","consent"].every(k=>GOOGLE_FORM.entries[k]);
+const gfReady=()=>GOOGLE_FORM.action&&["name","company","email","phone","service","size","message"].every(k=>GOOGLE_FORM.entries[k]);
 
 const VISION="To be a leading HR solution provider, transforming organisations through exceptional people strategies.";
 const MISSION="Empowering businesses with strategic HR solutions that drive growth, optimise talent and foster excellence.";
@@ -367,23 +367,23 @@ ${hero("Request a service","Tell us what you need. We will reply by email to arr
 </div></section>`,
 init:()=>{
  const q=new URLSearchParams((location.hash.split("?")[1])||"");const pre=q.get("s");
- const opts=S.map(s=>`<option value="${s.id}" ${s.id===pre?"selected":""}>${s.t}</option>`).join("")+`<option value="other">Other or not sure</option>`;
+ const opts=S.map(s=>`<option value="${s.id}" ${s.id===pre?"selected":""}>${s.t}</option>`).join("")+`<option value="other">Others or not sure</option>`;
  const box=document.getElementById("formbox");
  box.innerHTML=`<form id="f" novalidate>
  <div class="hp" aria-hidden="true"><label>Leave empty<input id="website" tabindex="-1" autocomplete="off"></label></div>
  <div class="row"><div><label for="name">Your name</label><input id="name" autocomplete="name" required><div class="err" id="e-name"></div></div>
  <div><label for="company">Company name</label><input id="company" autocomplete="organization" required><div class="err" id="e-company"></div></div></div>
  <div class="row"><div><label for="email">Business email</label><input id="email" type="email" autocomplete="email" required><div class="err" id="e-email"></div></div>
- <div><label for="phone">Telephone <span class="opt">(optional)</span></label><input id="phone" type="tel" autocomplete="tel"></div></div>
+ <div><label for="phone">Telephone</label><input id="phone" type="tel" autocomplete="tel" required><div class="err" id="e-phone"></div></div></div>
  <div class="row"><div><label for="service">Service of interest</label><select id="service" required><option value="">Select a service</option>${opts}</select><div class="err" id="e-service"></div></div>
- <div><label for="size">Organisation size <span class="opt">(optional)</span></label><select id="size"><option value="">Select</option><option>1 to 10 staff</option><option>11 to 50 staff</option><option>51 to 200 staff</option><option>200+ staff</option></select></div></div>
+ <div><label for="size">Organisation size</label><select id="size" required><option value="">Select</option><option>1 to 10 staff</option><option>11 to 50 staff</option><option>51 - 200 staff</option><option>201+ staff</option></select><div class="err" id="e-size"></div></div></div>
  <div><label for="msg">Your requirement</label><textarea id="msg" required maxlength="1500"></textarea><div class="err" id="e-msg"></div></div>
  <div><label class="chk"><input type="checkbox" id="consent"><span>I agree that AgileTalent may use these details to respond to my enquiry. We collect only what is on this form and use it only to reply to you.</span></label><div class="err" id="e-consent"></div></div>
  <div><button class="btn" type="submit">Send request</button></div></form>`;
  const f=document.getElementById("f"),v=id=>document.getElementById(id).value.trim();
  const rules={name:[()=>v("name").length>1,"Enter your name."],company:[()=>v("company").length>1,"Enter your company name."],
   email:[()=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v("email")),"Enter a valid business email address."],
-  service:[()=>v("service")!=="","Select a service."],msg:[()=>v("msg").length>=15,"Describe your requirement in at least 15 characters."],
+  phone:[()=>/^[+\d\s()-]{7,20}$/.test(v("phone")),"Enter a valid telephone number."],service:[()=>v("service")!=="","Select a service."],size:[()=>v("size")!=="","Select your organisation size."],msg:[()=>v("msg").length>=15,"Describe your requirement in at least 15 characters."],
   consent:[()=>document.getElementById("consent").checked,"Please confirm consent so we can respond."]};
  f.addEventListener("submit",e=>{e.preventDefault();
   if(v("website")) return;
@@ -398,6 +398,7 @@ init:()=>{
    const btn=f.querySelector("button[type=submit]");btn.disabled=true;btn.textContent="Sending\u2026";
    const fd=new FormData();
    for(const k in vals){const id=GOOGLE_FORM.entries[k];if(id&&vals[k])fd.append(id,vals[k]);}
+   fd.append("emailAddress",vals.email); // the form also asks for an email address
    // Google Forms does not return a readable response to other sites, so success means the request left the browser.
    fetch(GOOGLE_FORM.action,{method:"POST",mode:"no-cors",body:fd})
     .then(()=>done(`<div class="ok" role="status" tabindex="-1" id="okbox"><h2>Thank you. Your request has been submitted.</h2><p>We will reply by email to arrange a conversation about your requirement.</p></div>`))
