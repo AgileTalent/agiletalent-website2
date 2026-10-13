@@ -120,6 +120,16 @@ ${hero("Insights","Practical guides on hiring, HR, payroll and performance for N
 <section class="sec"><div class="wrap"><h2>In preparation</h2><p>These topics are planned editorial drafts. No articles are published yet.</p><div class="grid g2">${TOPICS.map(t=>`<div class="cell"><h3>${t}</h3><p>Draft topic, not yet published.</p></div>`).join("")}</div><p style="margin-top:28px">Want guidance on one of these now? <a href="#/contact"><strong>Send us an enquiry</strong></a>.</p></div></section>`},
 contact:{title:"Request a Service | Contact AgileTalent Associates",desc:"Send an enquiry to AgileTalent Associates about recruitment, HR consulting, payroll, performance management or learning and development.",html:()=>`
 ${hero("Request a service","Tell us what you need. We will reply by email to arrange a conversation.")}
+
+<iframe
+  src="https://www.linkedin.com/embed/feed/update/urn:li:share:7416500527238320129?collapsed=1"
+  title="AgileTalent Associates LinkedIn post"
+  width="504"
+  height="263"
+  style="width:100%; max-width:504px; height:263px; border:0; display:block; margin:24px auto;"
+  allowfullscreen>
+</iframe>
+
 <section class="sec"><div class="wrap split"><div><h2>What happens next</h2><ul class="tick"><li>You send a short enquiry.</li><li>We reply by email to the address you provide.</li><li>We arrange a call to understand your needs.</li><li>If we can help, we send a written proposal.</li></ul><p>Email: <a href="mailto:${SITE.email}">${SITE.email}</a></p><p class="note">Please do not send CVs, identity documents or employee records through this form.</p></div><div id="formbox"></div></div></section>`,
 init:()=>{
 const q=new URLSearchParams((location.hash.split("?")[1])||"");const pre=q.get("s");
